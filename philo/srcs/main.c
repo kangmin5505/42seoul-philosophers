@@ -6,7 +6,7 @@
 /*   By: kangkim <kangkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 14:27:20 by kangkim           #+#    #+#             */
-/*   Updated: 2022/03/01 16:26:35 by kangkim          ###   ########.fr       */
+/*   Updated: 2022/03/01 18:46:47 by kangkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,16 @@ static enum e_exit_status	print_msg(enum e_exit_status exit_status)
 
 int	main(int argc, const char **argv)
 {
-	int			result;
-	t_main_args	main_args;
+	int				result;
+	t_main_args		main_args;
+	t_philo_args	*philo_args;
+	t_shared_args	shared_args;
 
 	result = SUCCESS;
 	if (parse_input(argc, argv, &main_args) == false)
 		return (print_msg(PARSE_FAIL));
+	if (init_philo_args(&main_args, &philo_args, &shared_args) == false)
+		return (print_msg(ALLOC_FAIL));
+	free(philo_args);
 	return (print_msg(result));
 }

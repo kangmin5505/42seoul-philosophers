@@ -6,7 +6,7 @@
 /*   By: kangkim <kangkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 14:24:39 by kangkim           #+#    #+#             */
-/*   Updated: 2022/03/01 16:26:49 by kangkim          ###   ########.fr       */
+/*   Updated: 2022/03/01 18:43:09 by kangkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,13 @@
 # include <stddef.h>
 # include <unistd.h>
 # include <stdbool.h>
+# include <pthread.h>
+# include <stdlib.h>
 
-typedef struct s_main_args	t_main_args;
+typedef size_t					t_timestamp;
+typedef struct	s_main_args		t_main_args;
+typedef struct	s_philo_args	t_philo_args;
+typedef struct	s_shared_args	t_shared_args;
 
 struct s_main_args
 {
@@ -27,6 +32,29 @@ struct s_main_args
 	size_t	time_sleep;
 	size_t	n_must_eat;
 	bool	optional_arg;
+};
+
+struct s_philo_args
+{
+	pthread_t		philo;
+	size_t			id;
+	size_t			time_eat;
+	size_t			time_sleep;
+	size_t			n_eat;
+	t_timestamp		start_time;
+	t_timestamp		last_eat_time;
+	pthread_mutex_t	_fork;
+	pthread_mutex_t	*left_fork;
+	pthread_mutex_t	*right_fork;
+	pthread_mutex_t	event_lock;
+	bool			*is_end;
+	pthread_mutex_t	*is_end_lock;
+};
+
+struct	s_shared_args
+{
+	bool			is_end;
+	pthread_mutex_t	is_end_lock;
 };
 
 enum e_exit_status
@@ -40,4 +68,5 @@ enum e_exit_status
 
 size_t			ft_strlen(const char *str);
 bool			parse_input(int argc, const char **argv, t_main_args *main_args);
+bool			init_philo_args(t_main_args *main_args, t_philo_args **philo_args, t_shared_args *shared_args);
 #endif
