@@ -6,7 +6,7 @@
 /*   By: kangkim <kangkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/01 15:56:09 by kangkim           #+#    #+#             */
-/*   Updated: 2022/03/01 16:25:52 by kangkim          ###   ########.fr       */
+/*   Updated: 2022/03/01 20:14:21 by kangkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ static bool	parse_optional(const char **argv, t_main_args *main_args)
 	main_args->n_must_eat = arr_to_num(argv[5]);
 	if (main_args->n_must_eat == 0)
 		return (false);
+	main_args->optional_arg = true;
 	return (true);
 }
 

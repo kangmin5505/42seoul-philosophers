@@ -6,7 +6,7 @@
 /*   By: kangkim <kangkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 14:27:20 by kangkim           #+#    #+#             */
-/*   Updated: 2022/03/01 19:57:44 by kangkim          ###   ########.fr       */
+/*   Updated: 2022/03/01 20:00:21 by kangkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ static enum e_exit_status	print_msg(enum e_exit_status exit_status)
 
 int	main(int argc, const char **argv)
 {
-	int				result;
-	t_main_args		main_args;
-	t_philo_args	*philo_args;
-	t_shared_args	shared_args;
+	enum e_exit_status	result;
+	t_main_args			main_args;
+	t_philo_args		*philo_args;
+	t_shared_args		shared_args;
 
 	result = SUCCESS;
 	if (parse_input(argc, argv, &main_args) == false)
@@ -47,6 +47,8 @@ int	main(int argc, const char **argv)
 		free(philo_args);
 		return (print_msg(MUTEX_FAIL));
 	}
+	if (start_dining(&main_args, philo_args, &shared_args) == false)
+		result = RUNTIME_FAIL;
 	destroy_mutex(main_args.n_philos, philo_args, &shared_args);
 	free(philo_args);
 	return (print_msg(result));
