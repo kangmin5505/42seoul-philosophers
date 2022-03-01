@@ -6,7 +6,7 @@
 /*   By: kangkim <kangkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 14:24:39 by kangkim           #+#    #+#             */
-/*   Updated: 2022/03/01 18:43:09 by kangkim          ###   ########.fr       */
+/*   Updated: 2022/03/01 19:54:15 by kangkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@
 # include <stdbool.h>
 # include <pthread.h>
 # include <stdlib.h>
+# include <stdio.h>
+
+//==================== Typedef  ====================
 
 typedef size_t					t_timestamp;
 typedef struct	s_main_args		t_main_args;
@@ -66,7 +69,11 @@ enum e_exit_status
 	RUNTIME_FAIL
 };
 
-size_t			ft_strlen(const char *str);
-bool			parse_input(int argc, const char **argv, t_main_args *main_args);
-bool			init_philo_args(t_main_args *main_args, t_philo_args **philo_args, t_shared_args *shared_args);
+//==================== Prototype ====================
+
+size_t	ft_strlen(const char *str);
+bool	parse_input(int argc, const char **argv, t_main_args *main_args);
+bool	init_philo_args(t_main_args *main_args, t_philo_args **philo_args, t_shared_args *shared_args);
+bool	init_mutex(size_t n_philos, t_philo_args *philo_args, t_shared_args *shared_args);
+void	destroy_mutex(size_t n_philos, t_philo_args *philo_args, t_shared_args *shared_args);
 #endif

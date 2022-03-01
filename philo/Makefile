@@ -5,7 +5,7 @@ NAME	= philo
 SRCS_DIR = srcs
 OBJS_DIR = objs
 INCLUDE_DIR = include
-SRCS = main.c utils.c parser.c philo_args.c
+SRCS = main.c utils.c parser.c philo_args.c mutex.c
 OBJS = $(addprefix $(OBJS_DIR)/, $(SRCS:.c=.o))
 
 all : $(NAME)
