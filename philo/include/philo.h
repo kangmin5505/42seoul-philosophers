@@ -6,7 +6,7 @@
 /*   By: kangkim <kangkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 14:24:39 by kangkim           #+#    #+#             */
-/*   Updated: 2022/03/01 23:58:30 by kangkim          ###   ########.fr       */
+/*   Updated: 2022/03/02 00:51:41 by kangkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,8 +101,9 @@ void		philo_release_forks(t_philo_args *arg);
 void		philo_take_forks(t_philo_args *arg);
 // start_dining.c
 bool		start_dining(t_main_args *main_args, t_philo_args *philo_args, t_shared_args *shared_args);
-bool		is_dining_end(t_philo_args *arg);
 void		stop_dining(t_shared_args *shared_args);
-
+// observer_routine.c
+void		*observer_routine(void *_arg);
+bool		catch_end_status(t_observer_args *arg);
 
 #endif

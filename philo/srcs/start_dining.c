@@ -6,7 +6,7 @@
 /*   By: kangkim <kangkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/01 20:01:02 by kangkim           #+#    #+#             */
-/*   Updated: 2022/03/02 00:04:22 by kangkim          ###   ########.fr       */
+/*   Updated: 2022/03/02 00:42:57 by kangkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,16 +34,6 @@ static bool	dining_error(t_philo_args *philo_args, t_shared_args *shared_args, s
 	return (false);
 }
 
-bool	is_dining_end(t_philo_args *arg)
-{
-	bool	result;
-
-	pthread_mutex_lock(arg->is_end_lock);
-	result = *(arg->is_end);
-	pthread_mutex_unlock(arg->is_end_lock);
-	return (result);
-}
-
 bool	start_dining(t_main_args *main_args, t_philo_args *philo_args, t_shared_args *shared_args)
 {
 	size_t		idx;
@@ -60,8 +50,8 @@ bool	start_dining(t_main_args *main_args, t_philo_args *philo_args, t_shared_arg
 			return (dining_error(philo_args, shared_args, idx - 1));
 		idx++;
 	}
-//	if (pthread_create(&observer, NULL, observer_routine, &(t_observer_args){main_args, philo_args, shared_args}) != 0)
-//		return (dining_error(philo_args, shared_args, idx));
+	if (pthread_create(&observer, NULL, observer_routine, &(t_observer_args){main_args, philo_args, shared_args}) != 0)
+		return (dining_error(philo_args, shared_args, idx));
 	join_all(philo_args, &observer, idx);
 	return (true);
 }

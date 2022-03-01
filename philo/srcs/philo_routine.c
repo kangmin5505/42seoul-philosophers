@@ -6,11 +6,21 @@
 /*   By: kangkim <kangkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/01 20:57:03 by kangkim           #+#    #+#             */
-/*   Updated: 2022/03/01 23:37:42 by kangkim          ###   ########.fr       */
+/*   Updated: 2022/03/02 00:49:36 by kangkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+static bool	is_dining_end(t_philo_args *arg)
+{
+	bool	result;
+
+	pthread_mutex_lock(arg->is_end_lock);
+	result = *(arg->is_end);
+	pthread_mutex_unlock(arg->is_end_lock);
+	return (result);
+}
 
 static bool	eatting_philo(t_philo_args *arg)
 {
