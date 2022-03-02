@@ -6,7 +6,7 @@
 /*   By: kangkim <kangkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/01 15:11:01 by kangkim           #+#    #+#             */
-/*   Updated: 2022/03/01 23:27:08 by kangkim          ###   ########.fr       */
+/*   Updated: 2022/03/02 14:10:05 by kangkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ t_timestamp	get_timestamp_in_ms(void)
 	return (tp.tv_sec * 1000 + tp.tv_usec / 1000);
 }
 
-void	sychronized_status_log(t_philo_args *arg, const char *str)
+void	synchronized_status_log(t_philo_args *arg, const char *str)
 {
 	pthread_mutex_lock(&(arg->event_lock));
 	if (*(arg->is_end) == false)

@@ -6,7 +6,7 @@
 /*   By: kangkim <kangkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 14:24:39 by kangkim           #+#    #+#             */
-/*   Updated: 2022/03/02 00:51:41 by kangkim          ###   ########.fr       */
+/*   Updated: 2022/03/02 14:11:39 by kangkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ enum e_exit_status
 // utils.c
 size_t		ft_strlen(const char *str);
 t_timestamp	get_timestamp_in_ms(void);
-void		sychronized_status_log(t_philo_args *arg, const char *str);
+void		synchronized_status_log(t_philo_args *arg, const char *str);
 void		smart_sleep(t_timestamp target_time);
 
 // mutex.c

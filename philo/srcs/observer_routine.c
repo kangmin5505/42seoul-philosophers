@@ -6,7 +6,7 @@
 /*   By: kangkim <kangkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 00:07:29 by kangkim           #+#    #+#             */
-/*   Updated: 2022/03/02 00:51:20 by kangkim          ###   ########.fr       */
+/*   Updated: 2022/03/02 16:06:55 by kangkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,9 @@
 static void	someone_dead_handler(t_philo_args *arg)
 {
 	pthread_mutex_lock(arg->is_end_lock);
-	sychronized_status_log(arg, "died");
+	synchronized_status_log(arg, "died");
 	*(arg->is_end) = true;
+	philo_release_forks(arg);
 	pthread_mutex_unlock(arg->is_end_lock);
 }
 

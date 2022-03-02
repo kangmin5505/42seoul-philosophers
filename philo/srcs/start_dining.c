@@ -6,7 +6,7 @@
 /*   By: kangkim <kangkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/01 20:01:02 by kangkim           #+#    #+#             */
-/*   Updated: 2022/03/02 00:42:57 by kangkim          ###   ########.fr       */
+/*   Updated: 2022/03/02 16:06:43 by kangkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	join_all(t_philo_args *philo_args, pthread_t *observer, size_t n_phi
 {
 	if (observer != NULL)
 		pthread_join(*observer, NULL);
-	while (--n_philos)
+	while (n_philos--)
 		pthread_join(philo_args[n_philos].philo, NULL);
 }
 
