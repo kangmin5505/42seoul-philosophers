@@ -6,7 +6,7 @@
 /*   By: kangkim <kangkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 14:27:20 by kangkim           #+#    #+#             */
-/*   Updated: 2022/03/02 16:06:20 by kangkim          ###   ########.fr       */
+/*   Updated: 2022/03/03 13:26:46 by kangkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static enum e_exit_status	print_msg(enum e_exit_status exit_status)
 {
-	size_t	len;
+	size_t				len;
 	static const char	*msg[] = {
 		"",
 		"Usage: ./philo n_philos time_die time_eat time_sleep [n_must_eat]\n",

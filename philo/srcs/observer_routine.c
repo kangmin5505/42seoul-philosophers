@@ -6,7 +6,7 @@
 /*   By: kangkim <kangkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 00:07:29 by kangkim           #+#    #+#             */
-/*   Updated: 2022/03/02 16:06:55 by kangkim          ###   ########.fr       */
+/*   Updated: 2022/03/04 08:50:37 by kangkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,10 @@ bool	catch_end_status(t_observer_args *arg)
 	while (idx < arg->main_args->n_philos)
 	{
 		pthread_mutex_lock(&(arg->philo_args[idx].event_lock));
-		everyone_full &= (arg->philo_args[idx].n_eat >= arg->main_args->n_must_eat);
-		is_dead |= (get_timestamp_in_ms() - arg->philo_args[idx].last_eat_time > arg->main_args->time_die);
+		everyone_full &= (arg->philo_args[idx].n_eat >= \
+						  arg->main_args->n_must_eat);
+		is_dead |= (get_timestamp_in_ms() - arg->philo_args[idx].last_eat_time \
+					> arg->main_args->time_die);
 		pthread_mutex_unlock(&(arg->philo_args[idx].event_lock));
 		if (is_dead != false)
 			break ;

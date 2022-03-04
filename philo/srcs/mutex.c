@@ -6,13 +6,14 @@
 /*   By: kangkim <kangkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/01 18:55:51 by kangkim           #+#    #+#             */
-/*   Updated: 2022/03/01 19:51:36 by kangkim          ###   ########.fr       */
+/*   Updated: 2022/03/04 08:38:43 by kangkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-static bool	mutex_init_fork_event(pthread_mutex_t *_fork, pthread_mutex_t *event_lock)
+static bool	mutex_init_fork_event(pthread_mutex_t *_fork, \
+								  pthread_mutex_t *event_lock)
 {
 	if (pthread_mutex_init(_fork, NULL) != 0)
 		return (false);
@@ -24,7 +25,8 @@ static bool	mutex_init_fork_event(pthread_mutex_t *_fork, pthread_mutex_t *event
 	return (true);
 }
 
-bool	init_mutex(size_t n_philos, t_philo_args *philo_args, t_shared_args *shared_args)
+bool	init_mutex(size_t n_philos, t_philo_args *philo_args, \
+				   t_shared_args *shared_args)
 {
 	size_t	idx;
 
@@ -33,7 +35,8 @@ bool	init_mutex(size_t n_philos, t_philo_args *philo_args, t_shared_args *shared
 	idx = 0;
 	while (idx < n_philos)
 	{
-		if (mutex_init_fork_event(&(philo_args[idx]._fork), &(philo_args[idx].event_lock)) == false)
+		if (mutex_init_fork_event(&(philo_args[idx]._fork), \
+								  &(philo_args[idx].event_lock)) == false)
 		{
 			while (--idx)
 			{
@@ -48,7 +51,8 @@ bool	init_mutex(size_t n_philos, t_philo_args *philo_args, t_shared_args *shared
 	return (true);
 }
 
-void	destroy_mutex(size_t n_philos, t_philo_args *philo_args, t_shared_args *shared_args)
+void	destroy_mutex(size_t n_philos, t_philo_args *philo_args, \
+					  t_shared_args *shared_args)
 {
 	size_t	idx;
 

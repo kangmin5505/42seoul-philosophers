@@ -2,16 +2,19 @@ CC	= gcc
 CFLAGS	= -Wall -Wextra -Werror
 NAME	= philo_bonus
 
-SRCS =
-OBJS = $(SRCS:.c=.o)
+SRCS_DIR = srcs
+OBJS_DIR = objs
+INCLUDE_DIR = include
+SRCS = main.c parser.c utils.c semaphore.c start_dining.c philo_routine.c philo_routine_helper.c observer.c
+OBJS = $(addprefix $(OBJS_DIR)/,$(SRCS:.c=.o))
 
 all : $(NAME)
 
 $(NAME) : $(OBJS)
 	$(CC) $(CFLAGS) -o $@ $^
 
-%.o : %.c philo.h
-	$(CC) $(CFAGS) -c $<
+$(OBJS_DIR)/%.o : $(SRCS_DIR)/%.c $(INCLUDE_DIR)/philo_bonus.h
+	$(CC) $(CFLAGS) -I$(INCLUDE_DIR) -c -o $@ $<
 
 clean :
 	$(RM) $(OBJS)

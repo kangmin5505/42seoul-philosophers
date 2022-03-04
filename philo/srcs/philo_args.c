@@ -6,7 +6,7 @@
 /*   By: kangkim <kangkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/01 16:41:10 by kangkim           #+#    #+#             */
-/*   Updated: 2022/03/01 18:43:28 by kangkim          ###   ########.fr       */
+/*   Updated: 2022/03/04 08:37:51 by kangkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ bool	init_philo_args(t_main_args *main_args, t_philo_args **philo_args, \
 		(*philo_args)[idx].time_sleep = main_args->time_sleep;
 		(*philo_args)[idx].n_eat = 0;
 		(*philo_args)[idx].left_fork = &((*philo_args)[idx]._fork);
-		(*philo_args)[idx].right_fork = &((*philo_args)[(idx + 1) % main_args->n_philos]._fork);
+		(*philo_args)[idx].right_fork = &((*philo_args)[(idx + 1) % \
+										  main_args->n_philos]._fork);
 		(*philo_args)[idx].is_end = &(shared_args->is_end);
 		(*philo_args)[idx].is_end_lock = &(shared_args->is_end_lock);
 		idx++;
