@@ -1,6 +1,7 @@
 CC	= gcc
 CFLAGS	= -Wall -Wextra -Werror
 NAME	= philo
+RM		= rm -f
 
 SRCS_DIR = srcs
 OBJS_DIR = objs

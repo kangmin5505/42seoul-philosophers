@@ -45,7 +45,7 @@ static bool	wait_end(pthread_t observer, t_main_args *main_args, \
 			waitpid(pids[id], &status, 0);
 		id++;
 	}
-	while (--id)
+	while (id--)
 		sem_post(shared_args->full_philos);
 	if (main_args->optional_arg == true)
 		pthread_join(observer, NULL);
